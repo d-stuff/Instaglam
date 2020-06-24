@@ -1,14 +1,20 @@
 require('dotenv').config();
 
 module.exports = {
-  mongoUri: process.env.MONGO_URI || 'mongodb://localhost:27017/instaglam',
-  port: process.env.PORT || 4000,
-  tokenSecret: process.env.TOKEN_SECRET || 'mySecret',
-  refreshTokenSecret: process.env.REFRESH_TOKEN || 'myRefresh',
-  cookieSecret: process.env.COOKIE_SECRET || 'myRefresh',
-  googleStorageCredentials: {
-    keyFilename: process.env.GOOGLE_STORAGE_KEYFILENAME,
-    projectId: process.env.GOOGLE_STORAGE_PROEJCT
-  },
-  googleStorageBucketName: process.env.GOOGLE_STORAGE_BUCKET_NAME
+	mongoUri: process.env.MONGO_URI || 'mongodb://localhost:27017/instaglam',
+	port: process.env.PORT || 4000,
+	tokenSecret: process.env.TOKEN_SECRET || 'mySecret',
+	refreshTokenSecret: process.env.REFRESH_TOKEN || 'myRefresh',
+	cookieSecret: process.env.COOKIE_SECRET || 'myRefresh',
+	googleStorage: {
+		config: {
+			projectId: process.env.GOOGLE_STORAGE_PROJECT_ID,
+			scopes: 'https://www.googleapis.com/auth/cloud-platform',
+			credentials: {
+				client_email: process.env.GOOGLE_STORAGE_EMAIL,
+				private_key: process.env.GOOGLE_STORAGE_PRIVATE_KEY
+			}
+		},
+		bucketName: process.env.GOOGLE_STORAGE_BUCKET_NAME
+	},
 };
